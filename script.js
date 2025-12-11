@@ -194,7 +194,7 @@ function handleFormSubmit(event) {
                    `City: ${city}\n` +
                    `Health Concern: ${disease}`;
 
-    const whatsappNumber = '919876543210';
+    const whatsappNumber = '918099881940';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     closeRegistrationForm();
@@ -498,7 +498,7 @@ function handleCounsellingSubmit(event) {
                    `Please guide me with the next steps.`;
 
     // WhatsApp number (replace with your actual number)
-    const whatsappNumber = '919876543210'; // Replace with your WhatsApp number
+    const whatsappNumber = '918099881940'; // Replace with your WhatsApp number
 
     // Create WhatsApp URL
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -618,5 +618,71 @@ function closeLightbox() {
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeLightbox();
+    }
+});
+
+// ==========================================
+// CONTACT US FORM FUNCTIONALITY
+// ==========================================
+let contactFormPopup = null;
+
+function openContactForm() {
+    contactFormPopup = document.getElementById('contactFormPopup');
+    if (contactFormPopup) {
+        contactFormPopup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeContactForm() {
+    if (contactFormPopup) {
+        contactFormPopup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.getElementById('contactUsForm').reset();
+    }
+}
+
+function handleContactSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('contactName').value.trim();
+    const phone = document.getElementById('contactPhone').value.trim();
+    const city = document.getElementById('contactCity').value.trim();
+    const disease = document.getElementById('contactDisease').value.trim();
+
+    // Validate phone number
+    if (phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit mobile number');
+        return;
+    }
+
+    // Create WhatsApp message
+    const message = `Hello! I want to contact CMGC for medical guidance.\n\n` +
+                   `Name: ${name}\n` +
+                   `Contact Number: ${phone}\n` +
+                   `City: ${city}\n` +
+                   `Health Concern: ${disease}\n\n` +
+                   `Please guide me with the next steps.`;
+
+    // Your WhatsApp number (replace with your actual number)
+    const whatsappNumber = '918099881940'; // Format: country code + number (no spaces or +)
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    // Close form and open WhatsApp
+    closeContactForm();
+    window.open(whatsappURL, '_blank');
+}
+
+// Close form on outside click
+document.addEventListener('click', function(event) {
+    if (contactFormPopup && event.target === contactFormPopup) {
+        closeContactForm();
+    }
+});
+
+// Close form on ESC key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && contactFormPopup) {
+        closeContactForm();
     }
 });
