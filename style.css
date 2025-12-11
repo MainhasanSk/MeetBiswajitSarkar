@@ -1,0 +1,890 @@
+/* ==========================================
+   CUSTOM FONTS
+   ========================================== */
+
+@font-face {
+  font-family: 'eicons';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2') format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2') format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2') format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2') format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('https://rajivtalreja.co.in/wp-content/uploads/elementor/google-fonts/fonts/outfit-qgyvz_mvcbenp4njtetq.woff2') format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/* ==========================================
+   GLOBAL STYLES
+   ========================================== */
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Form Input Focus Styles */
+input:focus, 
+textarea:focus {
+  outline: none;
+}
+
+
+/* ==========================================
+   POPUP ANIMATION
+   ========================================== */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+
+/* ==========================================
+   FEATURED IN CAROUSEL (MEDIA LOGOS)
+   ========================================== */
+
+/* Carousel fade edges */
+#logoCarouselTrack {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Logo hover effect */
+#logoCarouselTrack img {
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+#logoCarouselTrack img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+
+/* ==========================================
+   HOSPITAL PARTNERS CAROUSEL - SMOOTH SCROLLING
+   ========================================== */
+
+/* Ultra-Smooth Continuous Scroll Animation */
+@keyframes smooth-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hospital Carousel Container */
+.hospital-scroll-animation {
+  animation: smooth-scroll 50s linear infinite;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  will-change: transform;
+}
+
+/* Pause animation on hover */
+.hospital-scroll-animation:hover {
+  animation-play-state: paused;
+}
+
+/* Alternative ID-based selector */
+#hospitalCarouselTrack {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  will-change: transform;
+}
+
+/* Hospital Logo Styles */
+#hospitalCarouselTrack img {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+
+/* Hospital Logo Hover Effects */
+#hospitalCarouselTrack img:hover {
+  transform: scale(1.15);
+  filter: grayscale(0%) !important;
+  opacity: 1 !important;
+}
+
+/* Optional: Add subtle shadow on hover */
+#hospitalCarouselTrack div:hover img {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+/* Hardware acceleration for smooth performance */
+#hospitalCarouselTrack div {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Smooth rendering */
+#hospitalCarouselTrack {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+
+/* ==========================================
+   SPEED VARIATIONS (Optional - Comment/Uncomment)
+   ========================================== */
+
+/* Slower Animation (60 seconds) */
+/*
+.hospital-scroll-animation {
+  animation: smooth-scroll 60s linear infinite;
+}
+*/
+
+/* Faster Animation (30 seconds) */
+/*
+.hospital-scroll-animation {
+  animation: smooth-scroll 30s linear infinite;
+}
+*/
+
+/* Very Fast Animation (20 seconds) */
+/*
+.hospital-scroll-animation {
+  animation: smooth-scroll 20s linear infinite;
+}
+*/
+
+
+/* ==========================================
+   RESPONSIVE OPTIMIZATIONS
+   ========================================== */
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  #hospitalCarouselTrack img {
+    filter: grayscale(80%);
+  }
+  
+  .hospital-scroll-animation {
+    animation: smooth-scroll 40s linear infinite;
+  }
+}
+
+/* Tablet and above */
+@media (min-width: 769px) {
+  .hospital-scroll-animation {
+    animation: smooth-scroll 50s linear infinite;
+  }
+}
+
+
+/* ==========================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+
+/* Enable GPU acceleration for all animated elements */
+.hospital-scroll-animation,
+#hospitalCarouselTrack,
+#logoCarouselTrack {
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Optimize image rendering */
+#hospitalCarouselTrack img,
+#logoCarouselTrack img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hospital-scroll-animation,
+  .carousel-track {
+    animation: none;
+  }
+  
+  #hospitalCarouselTrack,
+  #logoCarouselTrack {
+    animation: none;
+  }
+}
+
+
+/* ==========================================
+   CUSTOM SCROLLBAR (Optional)
+   ========================================== */
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* ==========================================
+   HOSPITAL PARTNERS CAROUSEL - INFINITE SMOOTH SCROLL
+   ========================================== */
+/* ==========================================
+   HOSPITAL PARTNERS ANIMATED LOGOS SECTION
+   ========================================== */
+
+/* Animated Logos Section */
+.animated-logos-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #f5f5f5 0%, #e5e5e5 100%);
+    overflow: hidden;
+}
+
+.logos-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Title with Gradient */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ef4444, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Section Subtitle */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Scrolling Animation Container */
+.logos-scroll-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+/* Fade edges effect */
+.logos-scroll-wrapper::before,
+.logos-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.logos-scroll-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, #e5e5e5 0%, rgba(229,229,229,0) 100%);
+}
+
+.logos-scroll-wrapper::after {
+    right: 0;
+    background: linear-gradient(270deg, #e5e5e5 0%, rgba(229,229,229,0) 100%);
+}
+
+/* Logo Track - Infinite Scroll */
+.logos-track {
+    display: flex;
+    gap: 60px;
+    width: fit-content;
+}
+
+/* First Row - Scroll Left (→ Default Direction) */
+.logos-track-1 {
+    animation: scrollLeft 30s linear infinite;
+}
+
+/* Second Row - Scroll Right (← Opposite Direction) */
+.logos-track-2 {
+    animation: scrollRight 30s linear infinite;
+}
+
+/* Pause on Hover */
+.logos-scroll-wrapper:hover .logos-track {
+    animation-play-state: paused;
+}
+
+/* Scroll Animations */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Individual Logo Item */
+.logo-item {
+    flex-shrink: 0;
+    width: 160px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo-item:hover {
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+    border-color: #ef4444;
+}
+
+/* Always Colorful Logos - No Grayscale */
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: none !important; /* Always colorful */
+    transition: transform 0.3s ease;
+}
+
+.logo-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Bottom Note / Trust Badge */
+.logos-note {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: 30px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .animated-logos-section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .logos-track {
+        gap: 40px;
+    }
+    
+    .logos-track-1 {
+        animation: scrollLeft 20s linear infinite;
+    }
+    
+    .logos-track-2 {
+        animation: scrollRight 20s linear infinite;
+    }
+    
+    .logo-item {
+        width: 120px;
+        height: 80px;
+        padding: 15px;
+    }
+    
+    .logos-scroll-wrapper::before,
+    .logos-scroll-wrapper::after {
+        width: 80px;
+    }
+    
+    .logos-scroll-wrapper {
+        padding: 15px 0;
+        margin-bottom: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .animated-logos-section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .logos-track {
+        gap: 30px;
+    }
+    
+    .logos-track-1 {
+        animation: scrollLeft 15s linear infinite;
+    }
+    
+    .logos-track-2 {
+        animation: scrollRight 15s linear infinite;
+    }
+    
+    .logo-item {
+        width: 100px;
+        height: 70px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    .logos-scroll-wrapper::before,
+    .logos-scroll-wrapper::after {
+        width: 50px;
+    }
+
+    .logos-note {
+        font-size: 0.85rem;
+    }
+}
+
+/* ==========================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+
+/* Hardware acceleration */
+.logos-track {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+.logo-item {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .logos-track-1,
+    .logos-track-2 {
+        animation: none;
+    }
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+/*Image Gellary section */
+/* Lightbox Smooth Transitions */
+#imageLightbox {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#lightboxImage {
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Image Hover Effect */
+.hover\:scale-105:hover {
+    transform: scale(1.05);
+}
