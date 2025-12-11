@@ -1,21 +1,31 @@
 // ==========================================
-// COUNTDOWN TIMER FUNCTIONALITY
+// COUNTDOWN TIMER WITH AUTO-RESET
 // ==========================================
 function updateCountdown() {
-    // Target date: December 7, 2025 at 9:00 AM IST
-    const targetDate = new Date('2025-12-07T09:00:00+05:30').getTime();
-
-    // Current date and time
+    // Calculate target: Always 1 day 23 hours 59 minutes 59 seconds from now
     const now = new Date().getTime();
+    const oneDayInMs = (1 * 24 * 60 * 60 * 1000) + (23 * 60 * 60 * 1000) + (59 * 60 * 1000) + (59 * 1000);
+    
+    // Check if we have a stored target date
+    let targetDate = localStorage.getItem('countdownTarget');
+    
+    if (!targetDate || now >= parseInt(targetDate)) {
+        // Set new target: current time + 1d 23h 59m 59s
+        targetDate = now + oneDayInMs;
+        localStorage.setItem('countdownTarget', targetDate);
+    } else {
+        targetDate = parseInt(targetDate);
+    }
 
     // Calculate the difference
     const difference = targetDate - now;
 
-    // If countdown is finished
+    // If countdown is finished (shouldn't happen with auto-reset, but safe guard)
     if (difference < 0) {
-        document.querySelectorAll('.countdown-days, .countdown-hours, .countdown-minutes, .countdown-seconds').forEach(el => {
-            el.textContent = '00';
-        });
+        // Reset immediately
+        targetDate = now + oneDayInMs;
+        localStorage.setItem('countdownTarget', targetDate);
+        updateCountdown(); // Call recursively
         return;
     }
 
@@ -28,7 +38,7 @@ function updateCountdown() {
     // Format numbers to always show 2 digits
     const formatNumber = (num) => num.toString().padStart(2, '0');
 
-    // Update all countdown displays on the page
+    // Update main countdown displays
     document.querySelectorAll('.countdown-days').forEach(el => {
         el.textContent = formatNumber(days);
     });
@@ -44,36 +54,167 @@ function updateCountdown() {
     document.querySelectorAll('.countdown-seconds').forEach(el => {
         el.textContent = formatNumber(seconds);
     });
+
+    // Format for "Offer Ends in" display (shows as Xd XXh XXm XXs)
+    const offerTimeText = `${days}d ${formatNumber(hours)}h ${formatNumber(minutes)}m ${formatNumber(seconds)}s`;
+
+    // Update "Offer Ends in" text in bottom bar
+    document.querySelectorAll('h2').forEach(h2 => {
+        if (h2.textContent.includes('Offer Ends in')) {
+            const span = h2.querySelector('span');
+            if (span) {
+                span.textContent = offerTimeText;
+            }
+        }
+    });
+
+    // Update inline offer timer spans
+    document.querySelectorAll('.offer-timer').forEach(el => {
+        el.textContent = `Offer Ends in ${offerTimeText}`;
+    });
 }
 
+// ==========================================
+// REST OF YOUR EXISTING CODE REMAINS THE SAME
+// ==========================================
+
+// ==========================================
+// REGISTRATION FORM POPUP
+// ==========================================
+let formPopup = null;
+
+function createFormPopup() {
+    const popupHTML = `
+        <div id="registrationPopup" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+            <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl animate-slideUp">
+                <button onclick="closeRegistrationForm()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+                    &times;
+                </button>
+
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-neutral-900 mb-2 font-montserrat">Register for Workshop</h2>
+                    <p class="text-sm text-red-500 offer-timer font-montserrat font-semibold">Offer Ends Soon</p>
+                </div>
+
+                <form id="registrationForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Full Name *</label>
+                        <input 
+                            type="text" 
+                            id="userName" 
+                            name="name" 
+                            required 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none font-montserrat"
+                            placeholder="Enter your full name"
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Contact Number *</label>
+                        <input 
+                            type="tel" 
+                            id="userPhone" 
+                            name="phone" 
+                            required 
+                            pattern="[0-9]{10}" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none font-montserrat"
+                            placeholder="Enter 10 digit mobile number"
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 font-montserrat">City *</label>
+                        <input 
+                            type="text" 
+                            id="userCity" 
+                            name="city" 
+                            required 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none font-montserrat"
+                            placeholder="Enter your city"
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Health Concern / Disease *</label>
+                        <textarea 
+                            id="userDisease" 
+                            name="disease" 
+                            required 
+                            rows="3"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none font-montserrat resize-none"
+                            placeholder="Briefly describe your health concern"
+                        ></textarea>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-4 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-montserrat"
+                    >
+                        Submit & Continue to WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', popupHTML);
+    formPopup = document.getElementById('registrationPopup');
+    document.getElementById('registrationForm').addEventListener('submit', handleFormSubmit);
+}
+
+function openRegistrationForm(event) {
+    event.preventDefault();
+    if (!formPopup) {
+        createFormPopup();
+    }
+    formPopup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeRegistrationForm() {
+    if (formPopup) {
+        formPopup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.getElementById('registrationForm').reset();
+    }
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('userName').value.trim();
+    const phone = document.getElementById('userPhone').value.trim();
+    const city = document.getElementById('userCity').value.trim();
+    const disease = document.getElementById('userDisease').value.trim();
+
+    if (phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit mobile number');
+        return;
+    }
+
+    const message = `Hello! I want to register for the CMGC Medical Guidance Workshop.\n\n` +
+                   `Name: ${name}\n` +
+                   `Contact: ${phone}\n` +
+                   `City: ${city}\n` +
+                   `Health Concern: ${disease}`;
+
+    const whatsappNumber = '919876543210';
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    closeRegistrationForm();
+    window.open(whatsappURL, '_blank');
+}
 
 // ==========================================
 // REGISTER BUTTON FUNCTIONALITY
 // ==========================================
-function handleRegisterClick(event) {
-    // The links already have href, so they will work automatically
-    console.log('Register button clicked - Redirecting to payment...');
-
-    // Add a subtle visual feedback
-    const button = event.currentTarget;
-    button.style.opacity = '0.8';
-
-    setTimeout(() => {
-        button.style.opacity = '1';
-    }, 200);
-}
-
 function initRegisterButtons() {
-    // Find all register buttons
-    const registerButtons = document.querySelectorAll('a[href*="payment.qloneapp.com"]');
-
-    console.log(`Found ${registerButtons.length} register buttons`);
-
+    const registerButtons = document.querySelectorAll('a[href*="payment.qloneapp.com"], a[href*="register"]');
+    
     registerButtons.forEach((button, index) => {
-        // Add transition for smooth effects
+        button.setAttribute('href', 'javascript:void(0);');
         button.style.transition = 'all 0.3s ease';
+        button.style.cursor = 'pointer';
 
-        // Add hover effects
         button.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.05)';
         });
@@ -82,79 +223,67 @@ function initRegisterButtons() {
             this.style.transform = 'scale(1)';
         });
 
-        // Add click handler
-        button.addEventListener('click', handleRegisterClick);
-
-        console.log(`Register button ${index + 1} is now active`);
+        button.addEventListener('click', openRegistrationForm);
     });
 }
 
-
 // ==========================================
-// FEATURED IN CAROUSEL AUTO-SCROLL
+// COUNSELLING FORM FUNCTIONALITY
 // ==========================================
-let carouselInterval;
-let currentPosition = 0;
+let counsellingPopup = null;
 
-function startCarouselAutoScroll() {
-    // Find the carousel track - looking for the parent container of logo groups
-    const carouselTrack = document.querySelector('.relative.items-center.caret-transparent.flex.h-full');
+function openCounsellingForm() {
+    counsellingPopup = document.getElementById('counsellingPopup');
+    if (counsellingPopup) {
+        counsellingPopup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
 
-    if (!carouselTrack) {
-        console.log('Carousel track not found');
+function closeCounsellingForm() {
+    if (counsellingPopup) {
+        counsellingPopup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.getElementById('counsellingForm').reset();
+    }
+}
+
+function handleCounsellingSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('counsellingName').value.trim();
+    const phone = document.getElementById('counsellingPhone').value.trim();
+    const city = document.getElementById('counsellingCity').value.trim();
+    const disease = document.getElementById('counsellingDisease').value.trim();
+
+    if (phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit mobile number');
         return;
     }
 
-    // Clone all children to create seamless loop
-    const originalChildren = Array.from(carouselTrack.children);
-    originalChildren.forEach(child => {
-        const clone = child.cloneNode(true);
-        carouselTrack.appendChild(clone);
-    });
+    const message = `Hello! I want to book a FREE Medical Counselling Session.\n\n` +
+                   `Name: ${name}\n` +
+                   `Contact: ${phone}\n` +
+                   `City: ${city}\n` +
+                   `Health Concern: ${disease}\n\nPlease guide me with the next steps.`;
 
-    // Set initial position
-    carouselTrack.style.transition = 'transform 0.5s linear';
+    const whatsappNumber = '919876543210';
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-    // Clear any existing interval
-    if (carouselInterval) {
-        clearInterval(carouselInterval);
-    }
-
-    // Auto-scroll every 3 seconds
-    carouselInterval = setInterval(() => {
-        currentPosition -= 230; // Scroll by one logo width + margin
-
-        const totalWidth = carouselTrack.scrollWidth / 2;
-
-        // Reset to beginning if we've scrolled through all original items
-        if (Math.abs(currentPosition) >= totalWidth) {
-            carouselTrack.style.transition = 'none';
-            currentPosition = 0;
-            carouselTrack.style.transform = `translateX(${currentPosition}px)`;
-
-            // Re-enable transition after a brief moment
-            setTimeout(() => {
-                carouselTrack.style.transition = 'transform 0.5s linear';
-            }, 50);
-        } else {
-            carouselTrack.style.transform = `translateX(${currentPosition}px)`;
-        }
-    }, 3000);
+    closeCounsellingForm();
+    alert('Thank you! Redirecting to WhatsApp...');
+    window.open(whatsappURL, '_blank');
 }
 
-
 // ==========================================
-// ADD COUNTDOWN CLASSES TO EXISTING ELEMENTS
+// ADD COUNTDOWN CLASSES
 // ==========================================
 function initCountdownTimers() {
-    // Find all countdown containers
     const countdownContainers = document.querySelectorAll('.items-center.box-border.caret-transparent.gap-x-3\\.5.flex');
 
     countdownContainers.forEach(container => {
         const boxes = container.querySelectorAll('.text-white.items-center.bg-zinc-800');
 
         if (boxes.length === 4) {
-            // This is a countdown timer
             const numberElements = container.querySelectorAll('.text-\\[22px\\].font-extrabold, .text-\\[23px\\].font-extrabold, div[class*="font-extrabold"]');
 
             if (numberElements.length >= 4) {
@@ -162,43 +291,17 @@ function initCountdownTimers() {
                 numberElements[1].classList.add('countdown-hours');
                 numberElements[2].classList.add('countdown-minutes');
                 numberElements[3].classList.add('countdown-seconds');
-
-                console.log('Countdown timer initialized');
             }
         }
     });
 }
 
-
 // ==========================================
-// SMOOTH SCROLL AND ANIMATION EFFECTS
+// OPEN MAGAZINE PDF
 // ==========================================
-function addSmoothEffects() {
-    // Add smooth scroll behavior to page
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Animate elements on scroll (optional enhancement)
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe sections for scroll animations
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '1'; // Keep visible by default
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
+function openCertificatePDF() {
+    window.open('megazine.pdf', '_blank');
 }
-
 
 // ==========================================
 // INITIALIZE ALL FUNCTIONALITY
@@ -216,27 +319,41 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize register buttons
     initRegisterButtons();
 
-    // Start carousel after a short delay
-    setTimeout(startCarouselAutoScroll, 1000);
+    // Initialize counselling form
+    const counsellingForm = document.getElementById('counsellingForm');
+    if (counsellingForm) {
+        counsellingForm.addEventListener('submit', handleCounsellingSubmit);
+    }
 
-    // Add smooth effects
-    addSmoothEffects();
+    // Hide scroll indicator after 3 seconds
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    if (scrollIndicator) {
+        setTimeout(function() {
+            scrollIndicator.style.transition = 'opacity 0.5s ease-out';
+            scrollIndicator.style.opacity = '0';
+            setTimeout(function() {
+                scrollIndicator.style.display = 'none';
+            }, 500);
+        }, 3000);
+    }
 
     console.log('All scripts loaded successfully!');
 });
 
+// Close popup when clicking outside
+document.addEventListener('click', function(event) {
+    if (formPopup && event.target === formPopup) {
+        closeRegistrationForm();
+    }
+    if (counsellingPopup && event.target === counsellingPopup) {
+        closeCounsellingForm();
+    }
+});
 
-// ==========================================
-// HANDLE PAGE VISIBILITY CHANGES
-// ==========================================
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        // Pause carousel when tab is not visible
-        if (carouselInterval) {
-            clearInterval(carouselInterval);
-        }
-    } else {
-        // Resume carousel when tab becomes visible
-        startCarouselAutoScroll();
+// Close popup with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        if (formPopup) closeRegistrationForm();
+        if (counsellingPopup) closeCounsellingForm();
     }
 });

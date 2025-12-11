@@ -2,33 +2,30 @@
 // COUNTDOWN TIMER FUNCTIONALITY
 // ==========================================
 function updateCountdown() {
-    // Target date: December 7, 2025 at 9:00 AM IST
-    const targetDate = new Date('2025-12-07T09:00:00+05:30').getTime();
-
-    // Current date and time
+    // Calculate target: Always 1 day 23 hours 59 minutes 59 seconds from now
     const now = new Date().getTime();
+    const oneDayInMs = (1 * 24 * 60 * 60 * 1000) + (23 * 60 * 60 * 1000) + (59 * 60 * 1000) + (59 * 1000);
+    
+    // Check if we have a stored target date
+    let targetDate = localStorage.getItem('countdownTarget');
+    
+    if (!targetDate || now >= parseInt(targetDate)) {
+        // Set new target: current time + 1d 23h 59m 59s
+        targetDate = now + oneDayInMs;
+        localStorage.setItem('countdownTarget', targetDate);
+    } else {
+        targetDate = parseInt(targetDate);
+    }
 
     // Calculate the difference
     const difference = targetDate - now;
 
-    // If countdown is finished
+    // If countdown is finished (shouldn't happen with auto-reset, but safe guard)
     if (difference < 0) {
-        document.querySelectorAll('.countdown-days, .countdown-hours, .countdown-minutes, .countdown-seconds').forEach(el => {
-            el.textContent = '00';
-        });
-
-        // Update offer timer to show expired
-        document.querySelectorAll('.offer-timer').forEach(el => {
-            el.textContent = 'Offer Expired';
-        });
-
-        // Update the inline offer timer spans
-        document.querySelectorAll('h2 span[class*="text-"]').forEach(span => {
-            if (span.parentElement && span.parentElement.textContent.includes('Offer Ends in')) {
-                span.textContent = '00:00';
-            }
-        });
-
+        // Reset immediately
+        targetDate = now + oneDayInMs;
+        localStorage.setItem('countdownTarget', targetDate);
+        updateCountdown(); // Call recursively
         return;
     }
 
@@ -41,7 +38,7 @@ function updateCountdown() {
     // Format numbers to always show 2 digits
     const formatNumber = (num) => num.toString().padStart(2, '0');
 
-    // Update main countdown displays on the page
+    // Update main countdown displays
     document.querySelectorAll('.countdown-days').forEach(el => {
         el.textContent = formatNumber(days);
     });
@@ -58,21 +55,10 @@ function updateCountdown() {
         el.textContent = formatNumber(seconds);
     });
 
-    // Calculate total remaining time for "Offer Ends in MM:SS" format
-    const totalSeconds = Math.floor(difference / 1000);
-    const displayMinutes = Math.floor(totalSeconds / 60);
-    const displaySeconds = totalSeconds % 60;
+    // Format for "Offer Ends in" display (shows as Xd XXh XXm XXs)
+    const offerTimeText = `${days}d ${formatNumber(hours)}h ${formatNumber(minutes)}m ${formatNumber(seconds)}s`;
 
-    // Format as MM:SS (always showing seconds decreasing)
-    const offerTimeText = `${formatNumber(displayMinutes)}:${formatNumber(displaySeconds)}`;
-
-    // Update "Offer Ends in" timer in popup (class-based)
-    document.querySelectorAll('.offer-timer').forEach(el => {
-        el.textContent = `Offer Ends in ${offerTimeText} Mins`;
-    });
-
-    // Update inline offer timer spans in the HTML
-    // This targets spans inside h2 elements that contain "Offer Ends in"
+    // Update "Offer Ends in" text in bottom bar
     document.querySelectorAll('h2').forEach(h2 => {
         if (h2.textContent.includes('Offer Ends in')) {
             const span = h2.querySelector('span');
@@ -81,8 +67,12 @@ function updateCountdown() {
             }
         }
     });
-}
 
+    // Update inline offer timer spans
+    document.querySelectorAll('.offer-timer').forEach(el => {
+        el.textContent = `Offer Ends in ${offerTimeText}`;
+    });
+}
 
 // ==========================================
 // REGISTRATION FORM POPUP
@@ -90,22 +80,18 @@ function updateCountdown() {
 let formPopup = null;
 
 function createFormPopup() {
-    // Create popup HTML
     const popupHTML = `
         <div id="registrationPopup" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
             <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl animate-slideUp">
-                <!-- Close Button -->
                 <button onclick="closeRegistrationForm()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
                     &times;
                 </button>
 
-                <!-- Form Header -->
                 <div class="text-center mb-6">
                     <h2 class="text-2xl font-bold text-neutral-900 mb-2 font-montserrat">Register for Workshop</h2>
                     <p class="text-sm text-red-500 offer-timer font-montserrat font-semibold">Offer Ends Soon</p>
                 </div>
 
-                <!-- Registration Form -->
                 <form id="registrationForm" class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Full Name *</label>
@@ -167,67 +153,51 @@ function createFormPopup() {
         </div>
     `;
 
-    // Add popup to body
     document.body.insertAdjacentHTML('beforeend', popupHTML);
     formPopup = document.getElementById('registrationPopup');
-
-    // Add form submit handler
     document.getElementById('registrationForm').addEventListener('submit', handleFormSubmit);
 }
 
+
 function openRegistrationForm(event) {
     event.preventDefault();
-
     if (!formPopup) {
         createFormPopup();
     }
-
     formPopup.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    document.body.style.overflow = 'hidden';
 }
 
 function closeRegistrationForm() {
     if (formPopup) {
         formPopup.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scroll
-
-        // Reset form
+        document.body.style.overflow = 'auto';
         document.getElementById('registrationForm').reset();
     }
 }
 
 function handleFormSubmit(event) {
     event.preventDefault();
-
-    // Get form values
     const name = document.getElementById('userName').value.trim();
     const phone = document.getElementById('userPhone').value.trim();
     const city = document.getElementById('userCity').value.trim();
     const disease = document.getElementById('userDisease').value.trim();
 
-    // Validate phone number
     if (phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
         alert('Please enter a valid 10-digit mobile number');
         return;
     }
 
-    // Create WhatsApp message
     const message = `Hello! I want to register for the CMGC Medical Guidance Workshop.\n\n` +
                    `Name: ${name}\n` +
                    `Contact: ${phone}\n` +
                    `City: ${city}\n` +
                    `Health Concern: ${disease}`;
 
-    // WhatsApp number (replace with your actual number)
-    const whatsappNumber = '919876543210'; // Replace with your WhatsApp number
-
-    // Create WhatsApp URL
+    const whatsappNumber = '919876543210';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-    // Close form
     closeRegistrationForm();
-
-    // Redirect to WhatsApp
     window.open(whatsappURL, '_blank');
 }
 
@@ -236,20 +206,13 @@ function handleFormSubmit(event) {
 // REGISTER BUTTON FUNCTIONALITY
 // ==========================================
 function initRegisterButtons() {
-    // Find all register buttons
     const registerButtons = document.querySelectorAll('a[href*="payment.qloneapp.com"], a[href*="register"]');
-
-    console.log(`Found ${registerButtons.length} register buttons`);
-
+    
     registerButtons.forEach((button, index) => {
-        // Remove href to prevent default navigation
         button.setAttribute('href', 'javascript:void(0);');
-
-        // Add transition for smooth effects
         button.style.transition = 'all 0.3s ease';
         button.style.cursor = 'pointer';
 
-        // Add hover effects
         button.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.05)';
         });
@@ -258,10 +221,7 @@ function initRegisterButtons() {
             this.style.transform = 'scale(1)';
         });
 
-        // Add click handler to open form
         button.addEventListener('click', openRegistrationForm);
-
-        console.log(`Register button ${index + 1} is now active`);
     });
 }
 
